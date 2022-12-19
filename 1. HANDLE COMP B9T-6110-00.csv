@@ -1,0 +1,49 @@
+Feature Table,,,,,,,
+Length Units,Millimeters,,,,,,
+Coordinate Systems,world,,,,,,
+Data Alignments,original,,,,,,
+,,,,,,,
+Name,Control,Nom,Meas,Tol,Dev,Test,Out Tol
+A5 distance,Y Distance,95.000,120.007,±2.000,25.007,Fail,23.007
+A6 distance,3D Distance,45.000,120.007,±2.000,75.007,Fail,73.007
+A7 distance,Y Distance,39.800,120.007,±0.500,80.207,Fail,79.707
+A8 angle,3D Angle 2,25.000,179.914,±1.500,154.914,Fail,153.414
+A9 angle,3D Angle 2,84.600,179.914,±1.500,95.314,Fail,93.814
+A10 INNER DIAMETER,Diameter,5.200,14.009,±1.000,8.809,Fail,7.809
+A11 angle,3D Angle 1,4.900,0.086,±1.000,-4.814,Fail,-3.814
+A12 INNER DIAMETER,Diameter,5.200,14.162,±1.000,8.962,Fail,7.962
+A13 angle,3D Angle 1,14.400,0.086,±1.000,-14.314,Fail,-13.314
+A14 angle,3D Angle 1,14.400,0.086,±1.000,-14.314,Fail,-13.314
+A15 distance,Y Distance,1.500,120.007,±1.000,118.507,Fail,117.507
+A16 LENGTH OF STRAIGHT,Y Distance,124.000,120.007,±1.000,-3.993,Fail,-2.993
+A17 DIAMETER AFTER GRINDING,Diameter,21.700,14.031,±1.000,-7.669,Fail,-6.669
+A18 OUTER DIAMETER,Diameter,22.200,14.059,±1.000,-8.141,Fail,-7.141
+
+
+
+Custom Measurement Table,,,,,,,
+,,,,,,,
+Name,Control,Nom,Meas,Tol,Dev,Test,Out Tol
+A1 Distance,Custom,2.000,6.000,±0.500,4.000,Fail,3.500
+A2 Distance,Custom,191.500,10.000,±0.500,-181.500,Fail,-181.000
+A3 Distance,Custom,189.500,10.000,±0.500,-179.500,Fail,-179.000
+A4 Distance,Custom,135.000,10.000,±0.500,-125.000,Fail,-124.500
+B 1 THREAD,Custom,,10.000,±1.000,,,
+B2 CORROTION RESISTANCE,Custom,,10.000,±1.000,,,
+B3 THICKNESS TREATMENT,Custom,,12.000,±1.000,,,
+B4 DEPTH PENETRATION,Custom,,12.000,±1.000,,,
+B5 THROAT PENETRATION,Custom,,11.000,±1.000,,,
+C1 INCOMING PART INSP JIG,Custom,,,,,Pass,
+C2 PIN GO NOGO,Custom,,,,,Pass,
+C3 PIN SLIDING,Custom,,,,,Pass,
+C4 PIN PIERCE R,Custom,,,,,Pass,
+C5 PIN PUNCH MARK R,Custom,,,,,Pass,
+C6 PIN PUNCH MARK CENTER,Custom,,,,,Pass,
+C7 PIN PIERCE L,Custom,,,,,Pass,
+C8 PIN PUNCH MARK L,Custom,,,,,Fail,
+D1 APPEARANCE,Custom,,,,,Pass,
+D2 SURFACE TREATMENT,Custom,,,,,Pass,
+D3 NO SPATTER AREA,Custom,,,,,Pass,
+
+
+

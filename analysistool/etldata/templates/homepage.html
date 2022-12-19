@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %} Load data {% endblock %}
+
+{% block header_content %}
+
+<h1 class="masthead-heading text-uppercase mb-0">Analysis Pengukuran</h1>
+
+{% endblock %}
+
+{% block page_content %}
+
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <!-- Icon Divider-->
+        
+        <div style="display:flex ; align-items: center; justify-content: center;"> 
+            <ul>
+                <li><a href="{% url 'etldata:upload_csv' %}">Upload CSV</a></li>
+                <li><a href="{% url 'etldata:data' %}">Look at data</a></li>
+                <li><a href="{% url 'etldata:upload_excel' %}">Upload Excel</a></li>
+                <li><a href="{% url 'etldata:see_excels' %}">Read Excels</a></li>
+            </ul>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}
