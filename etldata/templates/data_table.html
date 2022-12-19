@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %} Load data {% endblock %}
+
+{% block header_content %}
+
+<h1 class="masthead-heading text-uppercase mb-0">Tabel Pengukuran</h1>
+
+{% endblock %}
+
+{% block page_content %}
+
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <!-- Icon Divider-->
+        
+        <div style="display:flex ; align-items: center; justify-content: center;"> 
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for field in fields %}
+                            <th>{{ field }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in instances %}
+                        <tr>
+                            {% for name, value in instance.get_fields %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</section>
+
+
+
+{% endblock %}
