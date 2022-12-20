@@ -1,0 +1,17 @@
+asgiref==3.5.2
+Django==4.1.3
+django-tables2==2.4.1
+gunicorn==20.1.0
+numpy==1.23.5
+pandas==1.5.2
+pip==22.3.1
+python-dateutil==2.8.2
+pytz==2022.6
+setuptools==65.5.1
+six==1.16.0
+sqlparse==0.4.3
+typing_extensions==4.4.0
+wheel==0.38.4
+whitenoise==6.2.0
+xlrd==2.0.1
+XlsxWriter==3.0.3
