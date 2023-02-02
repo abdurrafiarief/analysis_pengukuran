@@ -20,6 +20,7 @@ class Measurements(models.Model):
     test_result = models.CharField(max_length=10, choices=TEST_CHOICES, null=True)
     out_of_tolerance = models.FloatField(null=True)
     upload_time = models.DateTimeField(null=True)
+    upload_order = models.IntegerField(null=True)
 
     def get_fields(self):
         return [(field.name, getattr(self,field.name)) for field in Measurements._meta.fields]
@@ -27,6 +28,7 @@ class Measurements(models.Model):
 class Part(models.Model):
     part_id = models.CharField(max_length=30, primary_key=True)
     excel_file = models.FileField(upload_to='documents/')
+    pass_percentage = models.FloatField(default=0)
     upload_time = models.DateTimeField(auto_now_add=True)
 
 
