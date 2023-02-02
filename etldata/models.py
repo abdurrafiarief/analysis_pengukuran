@@ -20,7 +20,7 @@ class Measurements(models.Model):
     test_result = models.CharField(max_length=10, choices=TEST_CHOICES, null=True)
     out_of_tolerance = models.FloatField(null=True)
     upload_time = models.DateTimeField(null=True)
-    upload_order = models.IntegerField(null=True)
+    upload_order = models.IntegerField(null=True, default=1)
 
     def get_fields(self):
         return [(field.name, getattr(self,field.name)) for field in Measurements._meta.fields]

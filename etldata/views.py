@@ -32,7 +32,7 @@ def upload_csv(request):
                 return HttpResponse("The uploaded file is not a CSV file!")
 
             filename = csv_file.name
-            upload_order = filename.split("_")[1]
+            upload_order = int(filename.split("_")[1][0])
             filename = filename.split("_")[0]
             upload_time = date.today()
             
@@ -77,6 +77,7 @@ def upload_csv(request):
                     new_dict["out_of_tolerance"] = row[8]
                     new_dict["upload_time"] = upload_time
                     new_dict["length_units"] = length_units
+                    new_dict["upload_order"] = upload_order
                     print("object is saved")
                     object = Measurements(**new_dict)
                     object.save()
@@ -87,7 +88,7 @@ def upload_csv(request):
 
 
             # Return a response to the client
-            return HttpResponse("CSV file processed successfully!")
+            return render(request, 'getCsvForm.html', {'form': form})
     else:
         # Initialize a new form
         form = CSVFileForm()
@@ -139,7 +140,8 @@ def upload_excel(request):
             
             if ".xlsx" in part_id:
                 part_id = part_id[:-5]
-            
+
+            Part.objects.filter(part_id=part_id).delete()
             new_instance = Part()
             new_instance.part_id = part_id
             new_instance.excel_file = form.cleaned_data['excel_file']
@@ -170,13 +172,13 @@ def read_table_data(request):
                  "nom", "measurement", 
                  "tolerance", "deviation",
                   "test_result", 
-                  "out_of_tolerance", "upload_time"]
+                  "out_of_tolerance", "upload_time", "upload_order"]
 
     return render(request, 'data_table.html', {'instances': instances, 'fields': fields})
 
 def read_excel_files(request):
     instances = Part.objects.all()
-    fields = ["part_id", "upload_time"]
+    fields = ["part_id", "upload_time", "pass_percentage"]
 
     return render(request, 'excel_table.html', {'instances': instances, 'fields':fields})
 
@@ -227,6 +229,8 @@ def get_excel_file(request, part_id):
 def update_excel_file(part_id):
     obj = Part.objects.get(part_id=part_id)
     measurements = Measurements.objects.filter(part_id=part_id)
+    place_cell = {1:32, 2:34, 3:36, 4:38, 5:40,
+                  6:32, 7:34, 8:36, 9:38, 10:40}
 
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = "attachment; filename={}.xls".format(part_id)
@@ -260,8 +264,18 @@ def update_excel_file(part_id):
 
             print(letter_kode_name, dimension_low)
             if len(queried_measurements)>0:
-                print(letter_kode_name, dimension_low, queried_measurements[0].measurement)
-                write_with_style(ws, i, 32, queried_measurements[0].measurement)
+                for meas in queried_measurements:
+                    row = i
+                    upload_order = meas.upload_order
+                    if upload_order > 5:
+                        row = i+1
+                    
+                    if upload_order >10:
+                        upload_order = 0
+                    col = place_cell[upload_order]
+                        
+                    
+                    write_with_style(ws, row, col, meas.measurement)
     
     wb.save(filename)
     
